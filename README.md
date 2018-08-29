@@ -117,9 +117,16 @@ const milestoneDb = new MongoMilestoneDB({
 
 ## Error codes
 
-### 5100 -- Internal error - DB
+### 4100 - Bad request - DB
 
-* 5101 -- Mongo closed
+* 4101 - Must provide valid collection name
+* 4102 - Must provide valid ID
+* 4103 - Must provide valid snapshot
+* 4104 - Must provide valid integer version
+
+### 5100 - Internal error - DB
+
+* 5101 - Mongo closed
 
 
 [1]: https://github.com/share/sharedb

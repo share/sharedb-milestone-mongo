@@ -488,7 +488,7 @@ rules:
   - overrides: {}
   object-curly-spacing:
   - error
-  - always
+  - never
   object-curly-newline:
   - error
   - ObjectExpression:

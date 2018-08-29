@@ -32,7 +32,7 @@ function create(options, callback) {
   db = new MongoMilestoneDB(options);
 }
 
-require('sharedb/test/milestone-db')({ create: create });
+require('sharedb/test/milestone-db')({create: create});
 
 describe('MongoMilestoneDB', () => {
   describe('with a mongo callback', () => {
@@ -49,7 +49,7 @@ describe('MongoMilestoneDB', () => {
     });
 
     afterEach((done) => {
-      if (db._mongo) return db.close(done);
+      if (db._mongoPromise) return db.close(done);
       done();
     });
 
@@ -61,13 +61,13 @@ describe('MongoMilestoneDB', () => {
       const snapshot1 = SnapshotFactory.build((snapshot) => {
         snapshot.id = id;
         snapshot.v = version;
-        snapshot.data = { foo: 'bar' };
+        snapshot.data = {foo: 'bar'};
       });
 
       const snapshot2 = SnapshotFactory.build((snapshot) => {
         snapshot.id = id;
         snapshot.v = version;
-        snapshot.data = { foo: 'baz' };
+        snapshot.data = {foo: 'baz'};
       });
 
       db.saveMilestoneSnapshot(collection, snapshot1, (saveError1) => {
@@ -155,7 +155,7 @@ describe('MongoMilestoneDB', () => {
 
     beforeEach(() => {
       db = new MongoMilestoneDB(MONGO_URL);
-      return db._mongo.then(mongo => mongo.dropDatabase());
+      return db._mongoPromise.then(mongo => mongo.dropDatabase());
     });
 
     afterEach((done) => {
@@ -235,9 +235,9 @@ describe('MongoMilestoneDB', () => {
     let db;
 
     beforeEach(() => {
-      const options = { interval: 100 };
+      const options = {interval: 100};
       db = new MongoMilestoneDB(MONGO_URL, options);
-      return db._mongo.then(mongo => mongo.dropDatabase());
+      return db._mongoPromise.then(mongo => mongo.dropDatabase());
     });
 
     afterEach((done) => {
