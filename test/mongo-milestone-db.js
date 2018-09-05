@@ -94,7 +94,7 @@ describe('MongoMilestoneDB', () => {
         if (saveError) return done(saveError);
         mongo.collection('m_testcollection').indexInformation((indexError, indexes) => {
           if (indexError) return done(indexError);
-          expect(indexes.id_1_v_1).to.be.ok();
+          expect(indexes.d_1_v_1).to.be.ok();
           done();
         });
       });
