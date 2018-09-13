@@ -1,0 +1,14 @@
+{
+  "extends": "./eslint.base.yaml",
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "modules": true
+    }
+  },
+  "env": {
+    "mocha": true,
+    "es6": true,
+    "node": true
+  }
+}
