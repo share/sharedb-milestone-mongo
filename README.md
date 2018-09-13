@@ -1,5 +1,6 @@
 # sharedb-milestone-mongo
 
+[![NPM Version](https://img.shields.io/npm/v/sharedb-milestone-mongo.svg)](https://npmjs.org/package/sharedb-milestone-mongo)
 [![Build Status](https://travis-ci.org/share/sharedb-milestone-mongo.svg?branch=master)](https://travis-ci.org/share/sharedb-milestone-mongo.svg?branch=master)
 [![Coverage Status](https://coveralls.io/repos/github/share/sharedb-milestone-mongo/badge.svg?branch=master)](https://coveralls.io/github/share/sharedb-milestone-mongo?branch=master)
 
