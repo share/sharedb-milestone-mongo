@@ -123,7 +123,8 @@ const milestoneDb = new MongoMilestoneDB({
 * 4101 - Must provide valid collection name
 * 4102 - Must provide valid ID
 * 4103 - Must provide valid snapshot
-* 4104 - Must provide valid integer version
+* 4104 - Must provide valid integer version or null
+* 4105 - Must provide valid integer timestamp or null
 
 ### 5100 - Internal error - DB
 
