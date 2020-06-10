@@ -1,3 +1,7 @@
+# 0.3.0
+
+- Add support for [`mongodb@3`](https://mongodb.github.io/node-mongodb-native/3.6/api/)
+
 # 0.2.0
 
 - Add `fetchSnapshotByTimestamp` supporting methods
