@@ -25,7 +25,7 @@ const shareDb = new ShareDB({ milestoneDb: milestoneDb });
 
 ### Mongo
 
-The underlying Mongo database can be configured in a number of ways. This library wraps v2 of the [`mongodb`][2]
+The underlying Mongo database can be configured in a number of ways. This library uses the [`mongodb`][2]
 library, so any configuration that can be used there can be used in this library.
 
 Mongo can be configured simply using a connection string and any desired [options][3]:
@@ -34,7 +34,7 @@ Mongo can be configured simply using a connection string and any desired [option
 const milestoneDb = new MongoMilestoneDB('mongodb://localhost:27017/test', { loggerLevel: 'debug' });
 ```
 
-It can also be configured with a callback that provides an instance of a Mongo [`Db` object][4]:
+It can also be configured with a callback that provides an instance of a [`MongoClient`][4]:
 
 ```javascript
 const mongodb = require('mongodb');
@@ -59,8 +59,7 @@ const milestoneDb = new MongoMilestoneDB({
 #### Intervals
 
 By default, ShareDB will save a milestone snapshot with a given frequency. This library defaults to an interval of
-1,000, saving milestones when the 1,000th, 2,000th, etc. versions are committed. That default interval can be
-configured:
+1,000, saving milestones when the 1,000th, 2,000th, etc. versions are committed. That interval can be configured:
 
 ```javascript
 const milestoneDb = new MongoMilestoneDB({
@@ -133,5 +132,5 @@ const milestoneDb = new MongoMilestoneDB({
 
 [1]: https://github.com/share/sharedb
 [2]: https://mongodb.github.io/node-mongodb-native/
-[3]: http://mongodb.github.io/node-mongodb-native/2.2/api/MongoClient.html#connect
-[4]: http://mongodb.github.io/node-mongodb-native/2.2/api/Db.html
+[3]: https://mongodb.github.io/node-mongodb-native/3.6/api/MongoClient.html#.connect
+[4]: https://mongodb.github.io/node-mongodb-native/3.6/api/MongoClient.html
