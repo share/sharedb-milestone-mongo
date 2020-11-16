@@ -1,5 +1,5 @@
 /* eslint-disable global-require */
-const expect = require('expect.js');
+const expect = require('chai').expect;
 const MongoMilestoneDB = require('../lib/mongo-milestone-db');
 const SnapshotFactory = require('./factories/snapshot-factory');
 
@@ -102,8 +102,8 @@ const MONGO_URL = process.env.TEST_MONGO_URL || 'mongodb://localhost:27017/test'
             if (saveError) return done(saveError);
             mongo.collection('m_testcollection').indexInformation((indexError, indexes) => {
               if (indexError) return done(indexError);
-              expect(indexes.d_1_v_1).to.be.ok();
-              expect(indexes['m.mtime_1']).to.be.ok();
+              expect(indexes.d_1_v_1).to.be.ok;
+              expect(indexes['m.mtime_1']).to.be.ok;
               done();
             });
           });
@@ -113,14 +113,14 @@ const MONGO_URL = process.env.TEST_MONGO_URL || 'mongodb://localhost:27017/test'
           db.close((closeError) => {
             if (closeError) return done(closeError);
             db.getMilestoneSnapshot('testcollection', 'abc', null, (getError) => {
-              expect(getError).to.be.ok();
+              expect(getError).to.be.ok;
               done();
             });
           });
         });
 
         it('defaults to an interval of 1000', () => {
-          expect(db.interval).to.be(1000);
+          expect(db.interval).to.equal(1000);
         });
       });
 
@@ -154,7 +154,7 @@ const MONGO_URL = process.env.TEST_MONGO_URL || 'mongodb://localhost:27017/test'
             if (saveError) return done(saveError);
             mongo.collection('m_testcollection').indexInformation((indexError, indexes) => {
               if (indexError) return done(indexError);
-              expect(indexes.id_1_v_1).not.to.be.ok();
+              expect(indexes.id_1_v_1).not.to.be.ok;
               done();
             });
           });
@@ -211,7 +211,7 @@ const MONGO_URL = process.env.TEST_MONGO_URL || 'mongodb://localhost:27017/test'
 
         it('returns a callback with error on close error', (done) => {
           db.close((error) => {
-            expect(error).to.be.ok();
+            expect(error).to.be.ok;
             done();
           });
         });
@@ -219,7 +219,7 @@ const MONGO_URL = process.env.TEST_MONGO_URL || 'mongodb://localhost:27017/test'
         it('emits an error when saving with no callback', (done) => {
           const snapshot = SnapshotFactory.build();
           db.on('error', (error) => {
-            expect(error).to.be.ok();
+            expect(error).to.be.ok;
             done();
           });
 
@@ -237,7 +237,7 @@ const MONGO_URL = process.env.TEST_MONGO_URL || 'mongodb://localhost:27017/test'
 
           const db = new MongoMilestoneDB(options);
           db.getMilestoneSnapshot('testcollection', 'abc', null, (error) => {
-            expect(error).to.be.ok();
+            expect(error).to.be.ok;
             done();
           });
         });
@@ -249,7 +249,7 @@ const MONGO_URL = process.env.TEST_MONGO_URL || 'mongodb://localhost:27017/test'
         beforeEach(() => {
           const options = {interval: 100};
           db = new MongoMilestoneDB(MONGO_URL, options);
-          return db._mongoPromise.then(mongo => mongo.dropDatabase());
+          return db._mongoPromise.then(mongo => mongo.db().dropDatabase());
         });
 
         afterEach((done) => {
@@ -257,7 +257,7 @@ const MONGO_URL = process.env.TEST_MONGO_URL || 'mongodb://localhost:27017/test'
         });
 
         it('has its interval overridden', () => {
-          expect(db.interval).to.be(100);
+          expect(db.interval).to.equal(100);
         });
       });
     });
