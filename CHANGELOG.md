@@ -1,3 +1,7 @@
+# 0.5.0
+
+- Depend on ShareDB >= v1.0.0
+
 # 0.4.0
 
 - Add support for [`mongodb@3`](https://mongodb.github.io/node-mongodb-native/3.6/api/)
