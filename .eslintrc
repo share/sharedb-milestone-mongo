@@ -10,5 +10,13 @@
     "mocha": true,
     "es6": true,
     "node": true
-  }
+  },
+  "overrides": [
+    {
+      "files": "test/**/*",
+      "rules": {
+        "no-unused-expressions": "off"
+      }
+    }
+  ]
 }
