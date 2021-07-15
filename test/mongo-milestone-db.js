@@ -2,10 +2,11 @@
 const expect = require('chai').expect;
 const MongoMilestoneDB = require('../lib/mongo-milestone-db');
 const SnapshotFactory = require('./factories/snapshot-factory');
+const mongodbRequire = require('../lib/mongodb');
 
 const MONGO_URL = process.env.TEST_MONGO_URL || 'mongodb://localhost:27017/test';
 
-['mongodb2', 'mongodb3'].forEach((driver) => {
+['mongodb2', 'mongodb3', 'mongodb4'].forEach((driver) => {
   const mongodb = require(driver);
 
   function create(options, callback) {
@@ -20,7 +21,13 @@ const MONGO_URL = process.env.TEST_MONGO_URL || 'mongodb://localhost:27017/test'
       mongo: (shareDbCallback) => {
         let mongo;
 
-        mongodb.connect(MONGO_URL)
+        const connect = (url) => {
+          if (typeof mongodb.connect === 'function') return mongodb.connect(url);
+          const client = new mongodb.MongoClient(MONGO_URL);
+          return client.connect();
+        };
+
+        connect(MONGO_URL)
           .then((mongoConnection) => {
             mongo = mongoConnection;
             return MongoMilestoneDB._isLegacyMongoClient(mongo)
@@ -38,6 +45,10 @@ const MONGO_URL = process.env.TEST_MONGO_URL || 'mongodb://localhost:27017/test'
   }
 
   describe(`[${ driver } driver]`, () => {
+    beforeEach(() => {
+      mongodbRequire.mongodb = mongodb;
+    });
+
     require('sharedb/test/milestone-db')({create: create});
 
     describe('MongoMilestoneDB', () => {
@@ -249,7 +260,7 @@ const MONGO_URL = process.env.TEST_MONGO_URL || 'mongodb://localhost:27017/test'
         beforeEach(() => {
           const options = {interval: 100};
           db = new MongoMilestoneDB(MONGO_URL, options);
-          return db._mongoPromise.then(mongo => mongo.db().dropDatabase());
+          return db._db().then(mongo => mongo.dropDatabase());
         });
 
         afterEach((done) => {
