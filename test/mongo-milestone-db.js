@@ -6,7 +6,12 @@ const mongodbRequire = require('../lib/mongodb');
 
 const MONGO_URL = process.env.TEST_MONGO_URL || 'mongodb://localhost:27017/test';
 
-['mongodb2', 'mongodb3', 'mongodb4'].forEach((driver) => {
+[
+  'mongodb2',
+  'mongodb3',
+  'mongodb4',
+  'mongodb5',
+].forEach((driver) => {
   const mongodb = require(driver);
 
   function create(options, callback) {
@@ -111,8 +116,7 @@ const MONGO_URL = process.env.TEST_MONGO_URL || 'mongodb://localhost:27017/test'
 
           db.saveMilestoneSnapshot('testcollection', snapshot, (saveError) => {
             if (saveError) return done(saveError);
-            mongo.collection('m_testcollection').indexInformation((indexError, indexes) => {
-              if (indexError) return done(indexError);
+            mongo.collection('m_testcollection').indexInformation().then((indexes) => {
               expect(indexes.d_1_v_1).to.be.ok;
               expect(indexes['m.mtime_1']).to.be.ok;
               done();
@@ -163,8 +167,7 @@ const MONGO_URL = process.env.TEST_MONGO_URL || 'mongodb://localhost:27017/test'
 
           db.saveMilestoneSnapshot('testcollection', snapshot, (saveError) => {
             if (saveError) return done(saveError);
-            mongo.collection('m_testcollection').indexInformation((indexError, indexes) => {
-              if (indexError) return done(indexError);
+            mongo.collection('m_testcollection').indexInformation().then((indexes) => {
               expect(indexes.id_1_v_1).not.to.be.ok;
               done();
             });
