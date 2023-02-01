@@ -7,7 +7,6 @@ const mongodbRequire = require('../lib/mongodb');
 const MONGO_URL = process.env.TEST_MONGO_URL || 'mongodb://localhost:27017/test';
 
 [
-  'mongodb2',
   'mongodb3',
   'mongodb4',
   'mongodb5',
@@ -17,7 +16,6 @@ const MONGO_URL = process.env.TEST_MONGO_URL || 'mongodb://localhost:27017/test'
   function create(options, callback) {
     if (typeof options === 'function') {
       callback = options;
-      options = {};
     }
 
     let db;
@@ -35,9 +33,7 @@ const MONGO_URL = process.env.TEST_MONGO_URL || 'mongodb://localhost:27017/test'
         connect(MONGO_URL)
           .then((mongoConnection) => {
             mongo = mongoConnection;
-            return MongoMilestoneDB._isLegacyMongoClient(mongo)
-              ? mongo.dropDatabase()
-              : mongo.db().dropDatabase();
+            return mongo.db().dropDatabase();
           })
           .then(() => {
             shareDbCallback(null, mongo);
@@ -65,9 +61,7 @@ const MONGO_URL = process.env.TEST_MONGO_URL || 'mongodb://localhost:27017/test'
           create((error, createdDb, createdMongo) => {
             if (error) return done(error);
             db = createdDb;
-            mongo = MongoMilestoneDB._isLegacyMongoClient(createdMongo)
-              ? createdMongo
-              : createdMongo.db();
+            mongo = createdMongo.db();
             done();
           });
         });
@@ -151,9 +145,7 @@ const MONGO_URL = process.env.TEST_MONGO_URL || 'mongodb://localhost:27017/test'
           create(options, (error, createdDb, createdMongo) => {
             if (error) return done(error);
             db = createdDb;
-            mongo = MongoMilestoneDB._isLegacyMongoClient(createdMongo)
-              ? createdMongo
-              : createdMongo.db();
+            mongo = createdMongo.db();
             done();
           });
         });
