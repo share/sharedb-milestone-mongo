@@ -2,7 +2,7 @@
 
 [![NPM Version](https://img.shields.io/npm/v/sharedb-milestone-mongo.svg)](https://npmjs.org/package/sharedb-milestone-mongo)
 [![Test](https://github.com/share/sharedb-milestone-mongo/workflows/Test/badge.svg)](https://github.com/share/sharedb-milestone-mongo/actions/workflows/test.yml)
-[![Coverage Status](https://coveralls.io/repos/github/share/sharedb-milestone-mongo/badge.svg?branch=master)](https://coveralls.io/github/share/sharedb-milestone-mongo?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/share/sharedb-milestone-mongo/badge.svg?branch=main)](https://coveralls.io/github/share/sharedb-milestone-mongo?branch=main)
 
 MongoDB milestone snapshot database adapter for [`sharedb`][1]. Milestone snapshots can be used to speed up the results
 of ShareDB's `connection.fetchSnapshot` method by providing points in time on top of which a smaller number of ops can
