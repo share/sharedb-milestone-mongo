@@ -5,7 +5,7 @@
   "main": "lib/index.js",
   "dependencies": {
     "mongodb": "^3.0.0 || ^4.0.0 || ^5.0.0",
-    "sharedb": "^1.0.0 || ^2.0.0 || ^3.0.0"
+    "sharedb": "share/sharedb#a7c7697b1b2d1dec2b1e04e0be722b7c311215ee"
   },
   "devDependencies": {
     "chai": "^4.2.0",
