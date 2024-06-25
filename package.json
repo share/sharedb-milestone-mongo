@@ -1,6 +1,6 @@
 {
   "name": "sharedb-milestone-mongo",
-  "version": "1.1.1",
+  "version": "2.0.0",
   "description": "MongoDB milestone snapshot database adapter for ShareDB",
   "main": "lib/index.js",
   "dependencies": {
