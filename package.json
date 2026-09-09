@@ -10,7 +10,7 @@
   "devDependencies": {
     "chai": "^4.2.0",
     "coveralls": "^3.1.0",
-    "eslint": "^7.14.0",
+    "eslint": "^10.10.0",
     "mocha": "^8.2.1",
     "mongodb3": "npm:mongodb@^3.0.0",
     "mongodb4": "npm:mongodb@^4.0.0",
