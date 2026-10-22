@@ -8,6 +8,7 @@
     "sharedb": "^1.0.0 || ^2.0.0 || ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0"
   },
   "devDependencies": {
+    "@eslint/eslintrc": "^3.3.7",
     "chai": "^6.2.2",
     "coveralls": "^3.1.0",
     "eslint": "^10.10.0",
@@ -21,7 +22,7 @@
     "sinon": "^22.0.0"
   },
   "scripts": {
-    "lint": "node_modules/.bin/eslint --ignore-path .gitignore '**/*.js'",
+    "lint": "node_modules/.bin/eslint .",
     "test": "mocha",
     "test-cover": "nyc --temp-dir=coverage -r text -r lcov npm test"
   },
