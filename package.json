@@ -17,7 +17,7 @@
     "mongodb5": "npm:mongodb@^5.0.0",
     "mongodb6": "npm:mongodb@^6.0.0",
     "mongodb7": "npm:mongodb@^7.0.0",
-    "nyc": "^15.1.0",
+    "nyc": "^18.0.0",
     "sinon": "^22.0.0"
   },
   "scripts": {
